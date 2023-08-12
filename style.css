@@ -28,13 +28,14 @@ h2, h3 {
 }
 .button{
     /*border: wheat solid 1px;*/
+    background-color: brown;
     border-radius: 10px;
     width: 100px;
     height: 100px;
     text-align: center;
     font-size: 70px;
-    transition: 1s;
+    transition: 0.5s ease;
 }
 .button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
