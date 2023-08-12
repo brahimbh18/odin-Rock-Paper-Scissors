@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: black;
+}
+h1 {
+    color: white;
+}
+h2, h3 {
+    color: wheat;
+}
+
+.score {
+    display: flex;
+    flex-wrap: wrap;
+    color: aliceblue;
+    justify-content: space-between;
+}
+
+
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.button{
+    /*border: wheat solid 1px;*/
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 70px;
+    transition: 1s;
+}
+.button:hover {
+    transform: scale(1.2);
+}

@@ -3,6 +3,7 @@ const c = 2;
 
 var player_score = 0;
 var computer_score = 0;
+var roundCount = 0;
 
 function getComputerChoice ()
 {
@@ -10,38 +11,26 @@ function getComputerChoice ()
     return choice[i];
 }
 
-function playerSelection() 
-{
-    var player_choice = prompt("choose ('rock', 'paper', 'scissors')").toLocaleLowerCase();
-    if (choice.includes(player_choice))
-    {
-        return player_choice;
-    }
-    alert("Error! wrong choice");
-    return playerSelection();
-}
-
 
 function playRound(playerSelection, computerSelection) 
 {
-    console.log("your score : " + player_score + "| computer's score : " + computer_score);
-
-    console.log("The computer choosed : " + computerSelection);
+    document.querySelector('h3').textContent = `The computer choosed : ${computerSelection}`;
+    
     switch (playerSelection)
     {
         case "rock":
             switch (computerSelection)
             {
                 case "rock":
-                    return "Tie";
+                    res = "Tie";
                 
                 case "paper":
                     computer_score++;
-                    return "You Lose! paper beats rock";
+                    res = "You Lose! paper beats rock";
 
                 case "scissors":
                     player_score++;
-                    return "You Win! rock beats scissors";
+                    res = "You Win! rock beats scissors";
             }
        
 
@@ -49,15 +38,15 @@ function playRound(playerSelection, computerSelection)
             switch (computerSelection)
             {
                 case "paper":
-                    return "Tie";
+                    res = "Tie";
                 
                 case "scissors":
                     computer_score++;
-                    return "You Lose! scissors beats paper";
+                    res = "You Lose! scissors beats paper";
 
                 case "rock":
                     player_score++;
-                    return "You Win! paper beats rock";
+                    res = "You Win! paper beats rock";
             }
             break;
 
@@ -65,47 +54,34 @@ function playRound(playerSelection, computerSelection)
             switch (computerSelection)
             {
                 case "scissors":
-                    return "Tie";
+                    res = "Tie";
                 
                 case "rock":
                     computer_score++;
-                    return "You Lose! rock beats scissors";
+                    res = "You Lose! rock beats scissors";
 
                 case "paper":
                     player_score++;
-                    return "You Win! scissors beats paper";
+                    res = "You Win! scissors beats paper";
             }
     
     }
+    return res;
 }
-
-function game()
+n = 0;
+function game(playerSelection)
 {
-    player_score = 0;
-    computer_score = 0;
+   console.log(n);
+   n++;
+   var computerSelection = getComputerChoice();
+    var result = console.log(playRound(playerSelection, computerSelection));
 
-    for (i = 0; i < 5; i++)
-    {
-        console.log(playRound(playerSelection(), getComputerChoice()));
-    }
+    //document.querySelector('h2').textContent = (result);
+    console.log(result)
 
-    console.log("game ended")
-
-    if (player_score == computer_score)
-    {
-        console.log("tie");
-    }
-    else if (player_score < computer_score)
-    {
-        console.log("You lose");
-    }
-    else if (player_score > computer_score)
-    {
-        console.log("You win");
-    }
-
+    document.querySelector(".player").textContent = `Player's score : ${player_score}`;
+    document.querySelector(".computer").textContent = `Computer's score : ${computer_score}`;
+   
+    if (roundCount == 5) console.log('game ended');
 }
-game();
-
-
 
