@@ -1,5 +1,5 @@
 const choice = ["rock", "paper", "scissors"];
-const c = 2;
+const c = 3;
 
 var player_score = 0;
 var computer_score = 0;
@@ -81,3 +81,54 @@ function game(playerSelection)
     if (roundCount == 5) console.log('game ended');
 }
 
+function loadGame() {
+
+    document.querySelector('.container1').remove();
+
+    const score = document.querySelector('.score');
+
+    
+    const player = document.createElement("div")
+    const computer = document.createElement("div")
+
+    player.classList.add('player');
+    computer.classList.add('computer');
+
+    player.textContent = "Player's score :";
+    computer.textContent = "Computer's score :";
+
+    score.appendChild(player);
+    score.appendChild(computer);
+
+    document.querySelector('h2').textContent = "choose to start!";
+
+    const container = document.querySelector(".container");
+
+    const rock = document.createElement("div");
+    const paper = document.createElement("div");
+    const scissors = document.createElement("div");
+
+    rock.textContent = "✊";
+    paper.textContent = "🤚";
+    scissors.textContent = "✌";
+
+    //rock.onclick = console.log('ff');
+    rock.addEventListener('click', () => game('rock'));
+    paper.addEventListener('click', () => game('paper'));
+    scissors.addEventListener('click', () => game('scissors'));
+
+    var elements = [rock, paper, scissors];
+    elements.forEach(element => {
+        element.classList.add('button');
+        container.appendChild(element);
+    });
+
+
+}
+
+function loadAboutPage() {
+    document.querySelector('.container1').remove();
+
+    document.querySelector('h3').textContent = "Section not ready yet! Stay tuned."
+
+}
