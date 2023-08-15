@@ -5,12 +5,17 @@ body {
    background-color:lightslategray
     
 }
+.body {
+    text-align: center;
+}
 h1 {
+    font-size: 50px;
     text-align: center;
 }
 h2, h3 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .score {
@@ -27,6 +32,7 @@ h2, h3 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    
 }
 .button{
     /*border: wheat solid 1px;*/
@@ -49,10 +55,10 @@ h2, h3 {
     
     align-items: center;
     justify-content: space-between;
-    margin-top: 150px;
+    margin-top: 70px;
     width: 70%;
 }
-button {
+.container1 > button {
     width: 80%;
     margin: 5px;
     height: 100px;
@@ -61,6 +67,30 @@ button {
     background-color: azure;
 }
 button:hover {
-    background-color: greenyellow;
+    background-color: red;
 }
+.result {
+    font-size: 40px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btns {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.btns > button {
+    width: 70%;
+    height: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin: 10px;
+}
+
 
