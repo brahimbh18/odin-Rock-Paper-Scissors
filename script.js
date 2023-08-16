@@ -76,113 +76,173 @@ function game(playerSelection)
     document.querySelector(".player").textContent = `Player's score : ${player_score}`;
     document.querySelector(".computer").textContent = `Computer's score : ${computer_score}`;
     roundCount++;
-    if (roundCount == 5) {
-        
+    if (roundCount == 5) {  
         roundCount = 0;
-        gameEnded();
+        loadResult();
+        player_score = 0;
+        computer_score = 0;
     }
 }
 
-function gameEnded() {
 
+const container = document.querySelector('.container');
+function loadHome() {
+    // empty the container
+    console.log(container);
+    container.innerHTML = "";
+
+    // create the start and about buttons
+    const start_btn = document.createElement("button");
+    const about_btn = document.createElement("button");
+
+    start_btn.textContent = "Start Game";
+    about_btn.textContent = "About";
     
-    const container = document.querySelector('.container1');
-    container.innerHTML = "";  
+    start_btn.addEventListener('click', () => loadGame());
+    about_btn.addEventListener('click', () => loadAbout());
 
-    const div = document.createElement("div");
-    div.classList.add("result");
-
-    console.log(player_score);
-    console.log(computer_score);
-    if (player_score < computer_score) div.textContent = "Game over! You lost!"
-    else if(player_score > computer_score) div.textContent = "Congratulations! You won!";
-    else div.textContent = "Score tied!";
-
-    
-    const div1 = document.createElement("div");
-    const playBtn = document.createElement('button');
-    const homeBtn = document.createElement('button');
-    div1.classList.add('btns');
-    playBtn.classList.add('playBtn');
-    homeBtn.classList.add('homeBtn');
-
-    playBtn.textContent = "Play again";
-    homeBtn.textContent = "Home";
-    player_score = 0;
-    computer_score = 0;
-    playBtn.addEventListener('click', () =>  loadGame());
-
-    div1.appendChild(playBtn);
-    div1.appendChild(homeBtn);
-    
-    container.appendChild(div);
-    container.appendChild(div1);
-
-    
-    
+    // append the buttons to the container 
+    container.appendChild(start_btn);
+    container.appendChild(about_btn);
 }
 
-
 function loadGame() {
+    container.innerHTML = "";
 
-    const container1 = document.querySelector('.container1');
-    container1.innerHTML = "";
+    // score widget ------------------------
+    const score = document.createElement("div");
+    const player = document.createElement("div");
+    const computer = document.createElement("div");
 
-    const score = document.createElement('div');
-    score.classList.add(".score")
-
-    
-    const player = document.createElement("div")
-    const computer = document.createElement("div")
-
-    player.classList.add('player');
-    computer.classList.add('computer');
+    score.classList.add("score");
+    player.classList.add("player");
+    computer.classList.add("computer");
 
     player.textContent = "Player's score :";
     computer.textContent = "Computer's score :";
-
+    
     score.appendChild(player);
-    score.appendChild(computer);
+    score.appendChild(computer);1
+    //--------------------------------------
+    const h3 = document.createElement("h3");
+    const h2 = document.createElement("h2");
+    h2.textContent =  "Choose to start!";
+    //-------------------------------------- 
 
-    h2 = document.createElement('h2');
-    h2.textContent = "choose to start!";
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add("btn-container");
 
-    
+    const rock = document.createElement('div');
+    const paper = document.createElement('div');
+    const scissors = document.createElement('div');
 
-    const container = document.createElement("div");
-    container.classList.add(".container")
-
-    const rock = document.createElement("div");
-    const paper = document.createElement("div");
-    const scissors = document.createElement("div");
-
-    rock.textContent = "✊";
-    paper.textContent = "🤚";
-    scissors.textContent = "✌";
-
-    
     rock.addEventListener('click', () => game('rock'));
-    paper.addEventListener('click', () => game('paper'));
-    scissors.addEventListener('click', () => game('scissors'));
+    paper.addEventListener('click', () => game("paper"));
+    scissors.addEventListener('click', () => game("scissors"));
 
     var elements = [rock, paper, scissors];
+    var choices = ["✊", "🤚", "✌"]
+    var i = 0;
+    
     elements.forEach(element => {
-        element.classList.add('button');
-        container.appendChild(element);
-    });
+        element.classList.add('btn');
+        element.textContent = choices[i];
+        i++;
+        btnContainer.appendChild(element);
+    })
+    //--------------------------------------
 
-    container1.appendChild(score);
-    container1.appendChild(h2);
-    container1.appendChild(container);
+    container.appendChild(score);
+    container.appendChild(h3);
+    container.appendChild(h2);
+    container.appendChild(btnContainer);
 }
 
-function loadAboutPage() {
-    const container = document.querySelector('.container1');
+function loadResult() {
+
     container.innerHTML = "";
 
-    const h3 = document.createElement("h3");
-    h3.textContent = "Section not ready yet! Stay tuned."
+    const h2 = document.createElement('h2');
+
+    if (player_score < computer_score) h2.textContent = "Game over! You lost!"
+    else if(player_score > computer_score) h2.textContent = "Congratulations! You won!";
+    else h2.textContent = "Score tied!";
+
+    const play_btn = document.createElement('button');
+    const home_btn = document.createElement('button');
+    play_btn.classList.add("play-btn");
+    home_btn.classList.add("home-btn");
+
+    play_btn.textContent = "Play again";
+    home_btn.textContent = "Home";
+
+    play_btn.addEventListener('click', () => loadGame());
+    home_btn.addEventListener('click', () => loadHome());
 
 
-    container.appendChild(h3);
+    container.appendChild(h2);
+    container.appendChild(play_btn);
+    container.appendChild(home_btn);
+
 }
+
+function loadAbout() {
+    container.innerHTML = "";
+
+    const ul = document.createElement('ul');
+    const li1 = document.createElement('li');
+    const li2 = document.createElement('li');
+    const li3 = document.createElement('li');
+    const li4 = document.createElement('li');
+    const li5 = document.createElement('li');
+    const li6 = document.createElement('li');
+    const li7 = document.createElement('li');
+    const li8 = document.createElement('li');
+
+    const a = document.createElement('a');   
+    var link = document.createTextNode("Click here");
+    a.appendChild(link);
+    a.title = "Click here "
+    a.href = 'https://en.wikipedia.org/wiki/Rock_paper_scissors';
+
+    const span = document.createElement('span');
+    const p = document.createElement('p');
+
+    p.textContent = "for more in depth information." ;
+    span.appendChild(a);
+    span.appendChild(p);
+
+    
+    li1.textContent = "Rock paper scissors is often used as a fair choosing method between two people, similar to coin flipping, drawing straws, or throwing dice in order to settle a dispute or make an unbiased group decision.";
+    li2.textContent = "But this time you will be playing against the computer.";
+    li3.textContent = "A game consists of five rounds, and the best out of five wins!";
+    li4.textContent = "Instructions :";
+    li5.textContent = "Rock beats scissors by breaking it.";
+    li6.textContent = "Scissors beat paper by cutting it.";
+    li7.textContent = "Paper beats rock by covering it.";
+    li8.appendChild(span)
+
+    const sublist = document.createElement('ul');
+    var subLines = [li5, li6, li7];
+    subLines.forEach(line => sublist.appendChild(line));
+    li4.appendChild(sublist)
+
+    var lines = [li1, li2, li3, li4, li8];
+    lines.forEach(line => ul.appendChild(line));
+
+    const btn = document.createElement("button");
+    btn.textContent = "Home";
+    btn.classList.add("home");
+    btn.addEventListener('click', () => loadHome()),
+
+    container.appendChild(ul);
+    container.appendChild(btn)
+
+
+
+}
+
+
+
+
+loadHome();
