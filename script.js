@@ -14,8 +14,8 @@ function getComputerChoice ()
 
 function playRound(playerSelection, computerSelection) 
 {
-    const h3 = document.createElement('h3');
-    h3.textContent = `The computer choosed : ${computerSelection}`;
+    
+    document.querySelector('h3').textContent = `The computer choosed : ${computerSelection}`;
     switch (playerSelection)
     {
         case "rock":
@@ -76,7 +76,7 @@ function game(playerSelection)
     document.querySelector(".player").textContent = `Player's score : ${player_score}`;
     document.querySelector(".computer").textContent = `Computer's score : ${computer_score}`;
     roundCount++;
-    if (roundCount == 5) {  
+    if (player_score == 5 || computer_score == 5) {  
         roundCount = 0;
         loadResult();
         player_score = 0;
@@ -166,7 +166,6 @@ function loadResult() {
 
     if (player_score < computer_score) h2.textContent = "Game over! You lost!"
     else if(player_score > computer_score) h2.textContent = "Congratulations! You won!";
-    else h2.textContent = "Score tied!";
 
     const play_btn = document.createElement('button');
     const home_btn = document.createElement('button');
@@ -215,7 +214,7 @@ function loadAbout() {
     
     li1.textContent = "Rock paper scissors is often used as a fair choosing method between two people, similar to coin flipping, drawing straws, or throwing dice in order to settle a dispute or make an unbiased group decision.";
     li2.textContent = "But this time you will be playing against the computer.";
-    li3.textContent = "A game consists of five rounds, and the best out of five wins!";
+    li3.textContent = "The first one to win five rounds wins!";
     li4.textContent = "Instructions :";
     li5.textContent = "Rock beats scissors by breaking it.";
     li6.textContent = "Scissors beat paper by cutting it.";
